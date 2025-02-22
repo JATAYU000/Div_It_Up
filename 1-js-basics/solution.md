@@ -1,4 +1,4 @@
-# Shopping Cart in JavaScript
+#Shopping Cart in JavaScript
 
 ## Introduction
 
