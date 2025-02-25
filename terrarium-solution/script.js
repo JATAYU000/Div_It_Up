@@ -45,16 +45,15 @@ function dragElement(terrariumElement) {
 
 document.querySelectorAll('.plant').forEach(image => {
     image.addEventListener('dblclick', function() {
-      // Set the z-index of the clicked image to a higher value
-      this.style.zIndex = 100; // You can use a higher value to ensure it's on top
+
+      this.style.zIndex = 100;
   
-      // Optionally, reset the z-index of other images to a lower value
       document.querySelectorAll('.plant').forEach(otherImage => {
         if (otherImage !== this) {
-          otherImage.style.zIndex = 2; // Reset to initial z-index
+          otherImage.style.zIndex = 2;
         }
       });
     });
-  });
+});
 
 
