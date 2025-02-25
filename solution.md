@@ -37,7 +37,8 @@ For adding a bubble shine to the container, I was confused as from where to star
 	top: 51%;
 	margin-left: 5%;
 	border-radius: 3rem;
-}```
+}
+```
 
 # Sub Topic 3
 
@@ -57,5 +58,6 @@ document.querySelectorAll('.plant').forEach(image => {
         }
       });
     });
-});```
+});
+```
 
