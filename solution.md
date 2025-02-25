@@ -12,7 +12,7 @@
 
  I have restyled the terrarium using flexbox, which includes flexibility and makes the code look relatively easier. Also using flexbox helps to arrange the elements in rows and columns, which can be later styled further, making our output be more satisfactory. The various attributes related to flex were interesting to use, along with attributes like justify-content and align-self, which I particularly used to center stage items, to make it more appealing. I further looked upon the features and difference of using flexbox, grid and bootstrap. While using grid lead to lot of difficulties in arranging things, flex was relatively much much easier to use and improved scalability.I also learnt about the position attributes which further made things easier.
 
-![terrarium](./snaps/terrarium-assignment.png)
+![terrarium](snaps/terrarium-assignment.png)
 
 ## Challenge
 
