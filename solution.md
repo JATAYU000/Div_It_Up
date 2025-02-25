@@ -12,6 +12,8 @@
 
  I have restyled the terrarium using flexbox, which includes flexibility and makes the code look relatively easier. Also using flexbox helps to arrange the elements in rows and columns, which can be later styled further, making our output be more satisfactory. The various attributes related to flex were interesting to use, along with attributes like justify-content and align-self, which I particularly used to center stage items, to make it more appealing. I further looked upon the features and difference of using flexbox, grid and bootstrap. While using grid lead to lot of difficulties in arranging things, flex was relatively much much easier to use and improved scalability.I also learnt about the position attributes which further made things easier.
 
+![terrarium](./snaps/terrarium-assignment.png)
+
 ## Challenge
 
 For adding a bubble shine to the container, I was confused as from where to start styling, but later figured it out that I had to create a separate element which I should style using attributes like background colour, border, etc... Bubble shine gave the container a much needed boost,as it added some touch of realness. It made the container look as if something was getting reflected which was appealing.
