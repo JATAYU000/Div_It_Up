@@ -8,6 +8,9 @@ const quotes = [
     'What one man can invent another can discover.',
     'Nothing clears up a case so much as stating it to another person.',
     'Education never ends, Watson. It is a series of lessons, with the greatest for the last.',
+    'Mediocrity knows nothing higher than itself; but talent instantly recognizes genius.',
+    'What you do in this world is a matter of no consequence. The question is what can you make people believe you have done.',
+    'Crime is common. Logic is rare. Therefore it is upon the logic rather than upon the crime that you should dwell.',
 ];
 // store the list of words and the index of the word the player is currently typing
 let words = [];
@@ -22,6 +25,7 @@ const typedValueElement = document.getElementById('typed-value');
 // at the end of script.js
 document.getElementById('start').addEventListener('click', () => {
     // get a quote
+    typedValueElement.className = 'typing-start';
     const quoteIndex = Math.floor(Math.random() * quotes.length);
     const quote = quotes[quoteIndex];
     // Put the quote into an array of words
@@ -51,36 +55,42 @@ document.getElementById('start').addEventListener('click', () => {
   });
 
   // at the end of script.js
-typedValueElement.addEventListener('input', () => {
-    // Get the current word
-    const currentWord = words[wordIndex];
-    // get the current value
-    const typedValue = typedValueElement.value;
-  
-    if (typedValue === currentWord && wordIndex === words.length - 1) {
-      // end of sentence
-      // Display success
-      const elapsedTime = new Date().getTime() - startTime;
-      const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
-      messageElement.innerText = message;
-    } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
-      // end of word
-      // clear the typedValueElement for the new word
-      typedValueElement.value = '';
-      // move to the next word
-      wordIndex++;
-      // reset the class name for all elements in quote
-      for (const wordElement of quoteElement.childNodes) {
-        wordElement.className = '';
-      }
-      // highlight the new word
-      quoteElement.childNodes[wordIndex].className = 'highlight';
-    } else if (currentWord.startsWith(typedValue)) {
-      // currently correct
-      // highlight the next word
-      typedValueElement.className = '';
-    } else {
-      // error state
-      typedValueElement.className = 'error';
+typedValueElement.addEventListener('input', getInput);
+
+
+
+function getInput(){
+  // Get the current word
+  const currentWord = words[wordIndex];
+  // get the current value
+  const typedValue = typedValueElement.value;
+
+  if (typedValue === currentWord && wordIndex === words.length - 1) {
+    // end of sentence
+    // Display success
+    const elapsedTime = new Date().getTime() - startTime;
+    const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
+    messageElement.innerText = message;
+    typedValueElement.removeEventListener('input',getInput);
+    typedValueElement.className = 'typing-end';
+  } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
+    // end of word
+    // clear the typedValueElement for the new word
+    typedValueElement.value = '';
+    // move to the next word
+    wordIndex++;
+    // reset the class name for all elements in quote
+    for (const wordElement of quoteElement.childNodes) {
+      wordElement.className = '';
     }
-  });
+    // highlight the new word
+    quoteElement.childNodes[wordIndex].className = 'highlight';
+  } else if (currentWord.startsWith(typedValue)) {
+    // currently correct
+    // highlight the next word
+    typedValueElement.className = 'typing-start';
+  } else {
+    // error state
+    typedValueElement.className = 'error';
+  }
+}
