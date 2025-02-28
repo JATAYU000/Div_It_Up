@@ -1,6 +1,89 @@
 # Sub Topic 1
 
 ## Assignment
+ 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(187, 195, 197);font-style: italic;font-weight: bolder;">
+    <div style="display: grid;grid-template-rows: 370px 90px 130px 80px 40px ;">
+        <div style="display: flex;flex-direction: row;height: 360px;gap: 150px;">
+            <div>
+                <img src="pic1.jpg" style="width: 100%;height: 80%;margin-right:40px;margin-top: 20px;margin-left: 40px;">
+            </div>
+            <div>
+                <h1>Rohit Reddy Anumolu</h1>
+                <h2>B.tech CSE</h2>
+                <p><b style="font-size: 18px;">Address:</b> Flat No 303, Venkata Sai Residency, NCL North Colony, Kompally, Telangana</p>
+                <p><b style="font-size: 18px;">Phone No:</b> 6309946999</p>
+                <p><b style="font-size: 18px;">Email No:</b> <a href="mailto:5668.rohit@gmail.com"> 5668.rohit@gmail.com</a></p>
+                <div style="display: flex;flex-direction: row;gap: 40px;padding-top: 10px;">
+                    <p><a href="https://www.linkedin.com/in/rohit-reddy-anumolu-37ba33323/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B%2FQLPtFC1TyKalYiEVQgYug%3D%3D">
+                        <img style="height: 50px;" src="https://logospng.org/download/linkedin/logo-linkedin-icon-1536.png"></a></p>
+                    <p><a href="https://x.com/AnumoluRohit"><img style="height: 50px;" src="https://th.bing.com/th?id=ODLS.ec2992dc-5c78-440a-970e-3ce5e3e7b0cb&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"></a></p>
+                    <p><a href="https://www.instagram.com/its_rohit1911_/"><img style="height: 50px;" src="https://th.bing.com/th?id=ODLS.7e9375d5-26a4-4702-bb17-c140827dc762&w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2"></a></p>
+                    <p><a href="https://github.com/A-Rohit-Reddy"><img style="height: 50px;" src="https://th.bing.com/th?id=ODLS.b2099a11-ca12-45ce-bede-5df940e38a48&w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2"></a></p>
+                </div>
+            </div>
+            
+        </div>
+        <div style="display: grid;grid-template-columns: 100px 1fr;">
+            <div>
+                <h3>Profile: </h3>
+            </div>
+            <div>
+                <a> Hello, myself Rohit Reddy Anumolu. I am currently pursuing my Btech in Amrita Vishwa Vidyapeetham in Amritapuri, Kerala.
+                    I have done my schooling in Hyderabad. I come from Hyderabad. I have a genuine interest in the field of coding, with my favourite subject being maths since my childhood.
+                    I have a pretty good command over python and c, and currently learning java. I am also working on my web development skills and aim to attain perfection in them.</a>
+            </div>
+        </div>
+        <div style="display: grid;grid-template-columns: 100px 1fr;">
+            <div style="display: block;">
+                <h3>Skills: </h3>
+            </div>
+            <div>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>PYTHON</li>
+                    <li>JAVA</li>
+                    <li>JAVASCRIPT</li>
+                    <li>C</li>
+    
+                </ul>
+            </div>
+        </div>
+        
+        <div style="display: grid;grid-template-columns: 100px 1fr;">
+            <div>
+                <h3>Education:  </h3>
+            </div>
+            <div>
+                <p>SCHOOLING: PALLAVI MODEL SCHOOL, BOWENPALLY, HYDERABAD, TELANGANA<br>
+                INTERMEDIATE: MODULUS, MIYAPUR, HYDERABAD, TELANGANA<br>
+                B.TECH: AMRITA VISHWA VIDYAPEETHAM, AMRITAPURI, KERALA</p>
+            </div>
+        </div>
+        <div style="display: grid;grid-template-columns: 100px 1fr;">
+            <div>
+                <h3>Hobbies: </h3>
+            </div>
+            <div>
+                <p>Playing Cricket, Piano, Chess, Watching tv, Listening to songs.</p>
+            </div>
+        </div>
+        
+      
+    </div>
+
+</body>
+</html>
+```
 
 ## Challenge
 
