@@ -25,7 +25,7 @@ const typedValueElement = document.getElementById('typed-value');
 // at the end of script.js
 document.getElementById('start').addEventListener('click', () => {
     // get a quote
-    typedValueElement.className = 'typing-start';
+    typedValueElement.disabled=false;
     const quoteIndex = Math.floor(Math.random() * quotes.length);
     const quote = quotes[quoteIndex];
     // Put the quote into an array of words
@@ -72,7 +72,7 @@ function getInput(){
     const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
     messageElement.innerText = message;
     typedValueElement.removeEventListener('input',getInput);
-    typedValueElement.className = 'typing-end';
+    typedValueElement.disabled=true;
   } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
     // end of word
     // clear the typedValueElement for the new word
@@ -88,7 +88,8 @@ function getInput(){
   } else if (currentWord.startsWith(typedValue)) {
     // currently correct
     // highlight the next word
-    typedValueElement.className = 'typing-start';
+    typedValueElement.className='';
+    typedValueElement.disabled=false;
   } else {
     // error state
     typedValueElement.className = 'error';
