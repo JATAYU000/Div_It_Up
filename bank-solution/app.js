@@ -6,3 +6,8 @@ function updateRoute(templateId) {
     app.appendChild(view);
   }
 updateRoute('Login');
+
+const routes = {
+    '/login': { templateId: 'login' },
+    '/dashboard': { templateId: 'dashboard' },
+};
