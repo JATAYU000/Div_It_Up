@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">Loading...</div>
+
+
+    <template id="login">
+      <h1>C&A Bank</h1>
+      <div id="logpage">
+        
+      
+        <h2>Login</h2>
+        <form id="loginForm" action="javascript:login()">
+          <label for="username">Username</label>
+          <input id="username" name="user" type="text">
+          <br>
+          <div id="loginError" role="alert"></div><br>
+          <button>Login</button>
+        </form><br>
+        
+        <div class="divider"><hr /><span>or</span><hr /></div>
+      <h2>Register</h2>
+        <form id="registerForm" action="javascript:register()" method="POST">
+          <label for="user">Username</label>
+          <input id="user" name="user" type="text" required><br>
+          <label for="currency">Currency</label>
+          <input id="currency" name="currency" type="text" value="$" required><br>
+          <label for="description">Description</label>
+          <input id="description" name="description" type="text"><br>
+          <label for="logbalance">Current balance</label>
+          <input id="logbalance" name="balance" type="number" value="0"><br>
+          <button>Register</button><br>
+        </form>
+        <br>
+        <div id="regesterError"></div><br><br>
+      </div>
+    </template>
+
+
+    <template id="dashboard">
+
+
+        <header>
+          <h1>Bank App</h1>
+          <!-- <a href="/login" onclick="onLinkClick(event)">Logout</a><br>
+          <a href="/page3" onclick="onLinkClick(event)">Next page</a> -->
+        </header>
+        
+        <div id="container">
+          <a id="Logout" href="/login" onclick="onLinkClick(event)">Logout</a><br>
+        <section id="sectionBalance">
+          Balance: <span id="balance"></span><span id="currency"></span>
+        </section>
+        </div>
+
+
+        <form id="transactionData" action="javascript: addTransaction()">
+          <h3>Instructions : You can add the date, object, amount into your Transactions List by submiting this form.</h3>
+          <br>
+          <label for="Date">Date :</label>
+          <input type="date" id="Date" name="birthday">
+          <label for="Object">Object :</label>
+          <input id="Object" type="text">
+          <label for="Amount">Amount :</label>
+          <input id="Amount" type="number">
+          <input type="submit" >
+          <br><br>
+          <div id="para">
+            <h2 id="description">Description :</h2>
+            <h2 id="DashboardDescription"></h2>
+          </div>
+        </form>
+        <br><br><br>
+        <div id="tableList">
+          <h2 id="list">Transactions List :</h2>
+          <h4 id="nothing"></h4>
+          <br>
+          <section id="transactions"></section>
+        </div>
+
+    </template>
+    
+    
+    <template id="tableTransaction">
+      <table>
+        <tr>
+          <td class="Data1"></td>
+          <td class="Data2"></td>
+          <td class="Data3"></td>
+        </tr>
+      </table>
+    </template>
+      
+    
+    <!-- <template id="page3">
+      <h3>This page shows the credits of the person</h3>
+      
+      <a href="/dashboard" onclick="onLinkClick(event)">Previous page</a>
+    </template> -->
+
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

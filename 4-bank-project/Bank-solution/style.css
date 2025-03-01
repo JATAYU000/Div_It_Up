@@ -1,0 +1,168 @@
+body {
+    background-color: #70c1c1;
+    z-index: 0;
+}
+
+
+h1 {
+    text-align: center;
+    color: #eaf6f6;
+}
+
+h2 {
+    color: #70c1c1;
+}
+
+hr {
+    width: 60px ;
+    opacity: 0.75;
+}
+
+
+button {
+    background-color: #70c1c1;
+    color: white;
+    border: 1px solid #40c5c5;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#regestererror, #loginError{
+    color: red;
+}
+
+
+#logpage{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 40px;
+    border-radius: 30px;
+    z-index: 2;
+    box-shadow: 1px 0px 5px 5px #479595;
+}
+
+#sectionBalance{
+    font-weight: bold;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 10px;
+    width: 15%;
+    margin-left: 82%;
+    border-radius: 15px;
+    z-index: 2;
+    box-shadow: 1px 0px 5px 5px #479595;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 16px;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 16px;
+}
+
+.divider {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+
+
+
+#transactionData {
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    width: 55%;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    z-index: 2;
+    box-shadow: 1px 0px 5px 5px #479595;
+}
+
+
+#transactions  {
+    color: black;
+    display: block;
+    padding: 10px;  
+}
+
+table {
+    display: grid;
+    align-items: center;
+}
+tr{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+
+
+#description {
+    padding-left: 30px;
+    color: black;
+}
+
+#para {
+    display: flex;
+
+}
+
+#DashboardDescription {
+   padding-left: 10px;
+}
+
+#tableList {
+    display: block;
+    margin: auto;
+    color: #16c7c7;
+    padding: 5px;
+    width: 30%;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 2;
+    box-shadow: 1px 0px 5px 5px #479595;
+}
+
+#nothing {
+    padding-left: 50px;
+    color: #f76b8a;
+}
+
+#Logout {
+    padding: 20px;
+    color: #f76b8a;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 2;
+    box-shadow: 1px 0px 5px 5px #479595;
+    text-decoration: none;
+}
+
+#container {
+    display: flex;
+}
+
+h3 {
+    color: black;
+    padding: 10px;
+}
