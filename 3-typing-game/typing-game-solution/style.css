@@ -1,0 +1,52 @@
+/* inside style.css */
+* {
+    color: aliceblue;
+    font-size: 35px;
+    font-family:'Times New Roman', Times, serif;
+}
+body {
+    margin-top: 100px;
+    background-image: url(./keyboard.jpg);
+}
+
+.highlight {
+    background-color: rgb(152, 152, 125);
+}
+
+#quote {
+    font-weight: 45px;
+    color: antiquewhite;
+}
+
+#typed-value {
+    background-color: black;
+    display: block;
+    margin: auto;
+}
+  
+.error {
+    background-color:  rgb(199, 154, 99);
+    border: 2px solid red;
+}
+
+
+#message {
+    
+    border-radius: 30px;
+    
+}
+
+h1 {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+
+
+#start {
+    margin-top: 10px;
+    display: block;
+    margin: auto;
+    background-color: black;
+    border-color: rgb(117, 119, 121);
+}
