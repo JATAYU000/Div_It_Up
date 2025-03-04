@@ -1,6 +1,6 @@
-### HTML Templates and Routes in a Web App
+## HTML Templates and Routes in a Web App
 
-## ASSIGNMENT
+### ASSIGNMENT
 ```js
 const routes = {
   '/login': { templateId: 'login' ,title:'Bank login'},
@@ -8,7 +8,7 @@ const routes = {
   '/credit': {templateId:'credit',title:'Bank credit'},
 };
 ```
-## CHALLENGE
+### CHALLENGE
 ***Added a new template and route for a third page that shows the credits for this app.***
 ```html
 <template id="credits">
@@ -26,9 +26,9 @@ function showCredits() {
             document.body.appendChild(clone);
         }
 ```
-### Build a Login and Registration Form
+## Build a Login and Registration Form
 
-## ASSIGNMENT
+### ASSIGNMENT
 ***Styling the  bank app using css.***
 -An image is added to represent the logo of the app.
 ```css
@@ -100,7 +100,7 @@ img{
 ```
 The interface after styling:
 ![Screenshot of the login page after adding CSS styles](./layout.png)
-## CHALLENGE
+### CHALLENGE
 ***Show an error message in the HTML if the user already exists.***
 ```html
 <div id="error" hidden style="color: red;"></div>
@@ -112,11 +112,11 @@ function showError(message) {
             errorDiv.hidden = false;
             }
 ```
-### Methods of Fetching and Using Data
-## ASSIGNMENT
+## Methods of Fetching and Using Data
+### ASSIGNMENT
 Added comments and refactored app.js to improve the code quality.
 Created  a constant to extract server api base URL,the createAccount function and getAccount function is regrouped to reudce the bulkiness of the code and the comments were added for the better understanding of the web app.
-## CHALLENGE
+### CHALLENGE
 ```css
 table {
   width: 100%;
@@ -141,8 +141,8 @@ td {
 }
 ```
 
-### Concepts of State Management
-## ASSIGNMENT
+## Concepts of State Management
+### ASSIGNMENT
 ```js
 const API_BASE_URL = 'http://localhost:5000/api/accounts';
 const STORAGE_KEY = 'savedUser'; //Changed storage key to only save user info
@@ -162,7 +162,7 @@ function init() {
   updateRoute();
 }
 ```
-## CHALLENGE
+### CHALLENGE
 Implementing the transaction dialog box;
 ```html
 <dialog id="transactionDialog">
