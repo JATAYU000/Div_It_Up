@@ -1,0 +1,129 @@
+.heading{
+    text-align: center;
+    font-size: 25px;
+    color: rgb(253, 237, 10);
+    font-family: 'Sigmar',sans-serif;
+    font-weight: bolder;
+    text-shadow: 6px 6px crimson;
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+}
+
+#loginError{
+    color: red;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 14%;
+    margin-bottom: 5px;
+}
+
+#registerError{
+    color: red;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 14%;
+    margin-bottom: 5px;
+}
+
+
+.forms{
+    display: inline-block;
+    width: 30%;
+    height: 65%;
+    margin-left: 35%;
+    font-size: 25px;
+    text-align:center ;
+    border: 2px solid gray;
+    border-radius: 40px;
+    background-color: rgb(231, 228, 228);
+    font-weight: bolder;
+    color: rgb(6, 160, 250);
+}
+h2{
+    font-size: 35px;
+    color: rgb(226, 2, 2);
+    text-transform: uppercase;
+    text-decoration: double;
+}
+input{
+    margin-bottom: 12px;
+    height: 40px;
+    width: 400px;
+    border-radius: 60px;
+    background-color: rgb(247, 246, 246);
+    font-size: 20px;
+}
+button{
+    margin-bottom: 18px;
+    height: 50px;
+    width: 400px;
+    background-color: red;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: rgb(247, 247, 247);
+}
+body{
+    background-color: rgb(8, 239, 247);
+}
+
+.heading2{
+    text-align: center;
+    font-size: 25px;
+    color: rgb(253, 237, 10);
+    font-family: 'Sigmar',sans-serif;
+    font-weight: bolder;
+    text-shadow: 6px 6px crimson;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoutButton{
+    margin-top: 50px;
+    width: 250px;
+    height: 80px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.logoutButton a{
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 2px 2px rgb(253, 249, 11);
+}
+
+#balanceField{
+    margin-top: 50px;
+    color: rgb(248, 164, 7);
+    display: flex;
+    flex-flow: column;
+    height: 70px;
+    padding-top: 10px;
+    text-shadow: 2px 2px rgb(164, 175, 6);
+    width: 100%;
+    font-size: 60px;
+    font-weight: bolder;
+    text-align: center;
+    background-color: rgb(145, 245, 233);
+}
+
+#table {
+    margin-left: 30%;
+    width: 40%;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#table td{
+    text-align: center;
+    margin-top: 5px;
+}
+
+#description {
+    text-align: center;
+}
