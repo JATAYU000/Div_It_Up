@@ -31,9 +31,9 @@
 
 .forms{
     display: inline-block;
-    width: 30%;
+    width: 40%;
     height: 65%;
-    margin-left: 35%;
+    margin-left: 30%;
     font-size: 25px;
     text-align:center ;
     border: 2px solid gray;
@@ -51,7 +51,7 @@ h2{
 input{
     margin-bottom: 12px;
     height: 40px;
-    width: 400px;
+    width: 70%;
     border-radius: 60px;
     background-color: rgb(247, 246, 246);
     font-size: 20px;
@@ -59,7 +59,7 @@ input{
 button{
     margin-bottom: 18px;
     height: 50px;
-    width: 400px;
+    width: 70%;
     background-color: red;
     border-radius: 60px;
     font-weight: bold;
@@ -98,13 +98,13 @@ body{
 }
 
 #balanceField{
-    margin-top: 50px;
+    margin-top: 30px;
     color: rgb(248, 164, 7);
     display: flex;
     flex-flow: column;
     height: 70px;
     padding-top: 10px;
-    text-shadow: 2px 2px rgb(164, 175, 6);
+    text-shadow: 2px 2px rgb(61, 1, 16);
     width: 100%;
     font-size: 60px;
     font-weight: bolder;
@@ -116,14 +116,143 @@ body{
     margin-left: 30%;
     width: 40%;
     margin-top: 10px;
+    color: rgb(1, 55, 116);
     font-size: 30px;
+    border-color: rgb(0, 6, 8);
+    border-collapse: collapse;
+}
+
+#table th{
+    border-width: 5px;
 }
 
 #table td{
     text-align: center;
     margin-top: 5px;
+    height: 60px;
+    border-width: 5px;
 }
 
 #description {
     text-align: center;
+    font-size: 50px;
+    color: rgb(4, 132, 236);
+    -webkit-text-stroke: 2px rgb(7, 84, 199);
+}
+
+@media screen and (max-width: 1504px) {
+    .forms {
+        width: 50%;
+        margin-left: 25%;
+    }
+    
+    input, button {
+        width: 70%;
+    }
+
+    #table {
+        width: 60%;
+        margin-left: 20%;
+    }
+}
+
+/* For mobile devices */
+@media screen and (max-width: 968px) {
+    .forms {
+        width: 70%;
+        margin-left: 15%;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    input, button {
+        width: 70%;
+        font-size: 18px;
+    }
+
+    button {
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .heading, .heading2 {
+        font-size: 20px;
+        text-shadow: 4px 4px crimson;
+    }
+
+    #balanceField {
+        font-size: 40px;
+        height: 60px;
+    }
+
+    #table {
+        width: 80%;
+        margin-left: 10%;
+        font-size: 25px;
+    }
+
+    #table td {
+        height: 50px;
+    }
+
+    .logoutButton{
+        margin-top: 50px;
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    
+    .logoutButton a{
+        font-size: 25px;
+        text-decoration: none;
+        color: white;
+        text-shadow: 2px 2px rgb(253, 249, 11);
+    }
+}
+
+/* For very small screens */
+@media screen and (max-width: 580px) {
+    .forms {
+        width: 70%;
+        margin-left: 15%;
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input, button {
+        width: 75%;
+        font-size: 16px;
+    }
+
+    button {
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .heading, .heading2 {
+        font-size: 18px;
+        text-shadow: 3px 3px crimson;
+    }
+
+    #balanceField {
+        font-size: 30px;
+        height: 50px;
+    }
+
+    #table {
+        width: 90%;
+        margin-left: 5%;
+        font-size: 20px;
+    }
+
+    #table td {
+        height: 40px;
+    }
 }
