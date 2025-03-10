@@ -1,8 +1,11 @@
 //Create a variable which stores the  logged-in user's details, with initial value as none indicating no user is logged in.
 //We need a private space to store all the user details who have created their accounts. These details are stored and used to retrieve the account details.
 
-let account = null;
+let state = Object.freeze({
+  account: null
+});
 const api = '//localhost:5000/api/accounts/';
+const storageKey = 'savedAccount';
 
 //We need to create an array which would hold all the required ids and titles of each template which would help in navigation.
 
@@ -14,13 +17,15 @@ const routes = {
     '/dashboard': { 
         templateId: 'dashboard',
         title: 'Dashboard',
-        init: updateDashboard
+        init: refresh
     },
     '/credits': {
         templateId: 'credits',
         title: 'credits'
     },
 };
+
+
 
 
 //templateId: The ID of the HTML template to load.
@@ -39,7 +44,7 @@ async function register() {
   }
 
   console.log('Account created!', result);
-  account = result;   // stores it into the variable we created for user details if no error is returned.
+  updateState('account',result);   // stores it into the variable we created for user details if no error is returned.
   navigate('/dashboard');  //calls the navigate function and navigates to the dashboard page.
 }
 
@@ -56,6 +61,12 @@ async function createAccount(account) {
   }
 }
 
+function logout() {
+  updateState('account', null);
+  localStorage.removeItem(storageKey);  //removes the items stored in the storageKey.
+  navigate('/login');  //redirects to the login page once logged out
+}
+
 async function login() {
   const loginForm = document.getElementById('loginForm'); //retrieves data from the login form and stores it in this variable.
   const user = loginForm.user.value; //the name type is used to get the username to the variable user.
@@ -64,7 +75,7 @@ async function login() {
     return updateElement('loginError',data.error);  //displays an error message when any error is found.
   }
 
-  account = data;  //stores the user details in the account variable.
+  updateState('account',data);  //stores the user details in the account variable.
   navigate('/dashboard');  //navigates to the dashboard page on logging in.
 }
 
@@ -78,6 +89,7 @@ async function getAccount(user) {
     return { error: error.message || 'Unknown error' };  //try and catch function to catch any error and display the error if there.
   }
 }
+
 
 //createTransactionRow generates a separate row for each transaction.
 
@@ -97,7 +109,7 @@ function updateRoute() {
     const route = routes[path];  //searches for the given template in the routes array.
     
     if (!route) {
-        return navigate('/login');  //if there is no route, then redirects to the login page.(basically used as a default)
+        return navigate('/dashboard');  //if there is no route, then redirects to the login page.(basically used as a default)
       }
 
     const template = document.getElementById(route.templateId);  //searches for the template in our html file.
@@ -110,7 +122,24 @@ function updateRoute() {
     if (typeof route.init === 'function') {
       route.init();   //calls an initialization function if one is defined.
     }
+
+    setTimeout(attachEventListeners,100);
   }
+
+function attachEventListeners() {
+    const logoutButton = document.querySelector(".logoutButton");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            console.log("Logout button clicked! Logging out...");
+            logout();
+        });
+    } else {
+        console.log("Logout button not found in the DOM!");
+    }
+}
+
+console.log(document.querySelector(".logoutButton"));
 
 
 function updateElement(id, textorNode){    //used to change the text of the respective element by specifying the parameters(id and text)
@@ -125,8 +154,9 @@ function navigate(path) {
 } //used for navigation purposes.
 
 function updateDashboard() {
+  const account = state.account;
   if (!account) {
-    return navigate('/login');
+    return logout();
   }
 
   updateElement('description', account.description);
@@ -141,5 +171,51 @@ function updateDashboard() {
   updateElement('transactions', transactionsRows);  //creates and appends the transaction rows.
 } 
 
-window.onpopstate = () => updateRoute();  //Ensures navigation works on clicking the back and forward buttons.
-updateRoute(); //Loads the correct page when the app starts.
+//we create a function which would update any details directly on the dashboard page itself without the need to reload and login again.
+
+async function updateAccountData() {
+  const account = state.account;
+  if (!account) {
+    return logout();
+  }
+
+  const data = await getAccount(account.user);
+  if (data.error) {
+    return logout();
+  }
+
+  updateState('account', data);
+}
+
+async function refresh() {
+  await updateAccountData();
+  updateDashboard();
+}
+
+function updateState(property, newData) {
+  state = Object.freeze({
+      ...state,
+      [property]: newData
+  });
+
+  if (newData && newData.user) {
+      localStorage.setItem(storageKey, newData.user);
+  } else {
+      localStorage.removeItem(storageKey);  // Ensure old data is removed
+  }
+}
+
+
+async function init() {
+  const savedUser = localStorage.getItem(storageKey);
+  if (savedUser) {
+    const info = await getAccount(savedUser);
+    updateState('account', info);    //calls the updateState function to get the entire user details after getting the username.
+  }
+
+  // Our previous initialization code
+  window.onpopstate = () => updateRoute();  //Ensures navigation works on clicking the back and forward buttons.
+  updateRoute(); //Loads the correct page when the app starts.
+}
+
+init();

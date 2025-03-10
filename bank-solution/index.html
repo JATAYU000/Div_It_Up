@@ -46,7 +46,7 @@
         <header>
           <div class="heading2">
             <h1>Bank App</h1>
-            <button class="logoutButton"><a href="/login" onclick="onLinkClick(event)">Logout</a></button>
+            <button class="logoutButton">Logout</button>
           </div>
           
           <!--<br><a href="/credits" onclick="onLinkClick(event)">Credits</a>-->
@@ -57,7 +57,14 @@
           </section>
         </div>
         <section>
-          <h2 id="description"></h2>
+          <div id="heading3">
+            <div>
+              <h2 id="description"></h2>
+            </div>
+            <div>
+              <button id="addTransactions" type="button">Add Transactions</button>
+            </div>
+          </div>
           <table id="table" border="6">
             <thead>
               <tr>
@@ -76,13 +83,6 @@
         <td></td>
         <td></td>
       </tr>
-    </template>
-    <template id="credits">
-        <header>
-            <h1>Bank App</h1>
-            <a href="/dashboard" onclick="onLinkClick(event)">Back</a><br>
-            <a href="/login" onclick="onLinkClick(event)">Logout</a>
-        </header>
     </template>
   </body>
 </html>
