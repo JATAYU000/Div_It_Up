@@ -48,6 +48,44 @@ async function register() {
   navigate('/dashboard');  //calls the navigate function and navigates to the dashboard page.
 }
 
+
+async function add(){
+  const transactionForm = document.getElementById('transactionForm');
+  if (!transactionForm) {
+    console.log("Transaction form not found!");
+    return;
+  }
+  const addDetails = new FormData(transactionForm);
+  const transactionDetails = Object.fromEntries(addDetails);
+  console.log("Transaction Details:", transactionDetails);
+  // Create the row
+  const transactionRow = createTransactionRow(transactionDetails);
+  // Find the transactions table
+  const transactionsTable = document.getElementById('transactions');  // Ensure this is the tbody, not the table
+  if (!transactionsTable) {
+    console.log("Transactions table not found!");
+    return;
+  }
+  // Append the new row to the table
+  transactionsTable.appendChild(transactionRow);
+  console.log("Attempting to save transaction to API...");
+
+  try {
+    const response = await fetch(`${api}${encodeURIComponent(state.account.user)}/transactions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(transactionDetails),
+    });
+    if (!response.ok) throw new Error(await response.text());
+    console.log("Transaction successfully saved to API.");
+  } catch (error) {
+    console.error("Error saving transaction:", error);
+  }
+
+  // Reset the form after adding
+  transactionForm.reset();
+}
+
 async function createAccount(account) {
   try {
     const response = await fetch(api , {
@@ -97,9 +135,9 @@ function createTransactionRow(transaction) {
   const template = document.getElementById('transaction');   //calls the transaction template.
   const transactionRow = template.content.cloneNode(true);  //clones the transaction template.
   const tr = transactionRow.querySelector('tr');
-  tr.children[0].textContent = transaction.date;
+  tr.children[0].textContent = transaction.date ;
   tr.children[1].textContent = transaction.object;
-  tr.children[2].textContent = transaction.amount.toFixed(2);  //updates the row with transaction details.
+  tr.children[2].textContent = transaction.amount;  //updates the row with transaction details.
   return transactionRow;  //returns the modified row.
 }
 
@@ -123,29 +161,22 @@ function updateRoute() {
       route.init();   //calls an initialization function if one is defined.
     }
 
-    setTimeout(attachEventListeners,100);
+    attachEventListeners();
   }
 
-function attachEventListeners() {
-    const logoutButton = document.querySelector(".logoutButton");
-
-    if (logoutButton) {
-        logoutButton.addEventListener("click", () => {
-            console.log("Logout button clicked! Logging out...");
-            logout();
-        });
-    } else {
-        console.log("Logout button not found in the DOM!");
-    }
+  function attachEventListeners() {
+    document.querySelector(".logoutButton")?.addEventListener("click", logout);
+    document.getElementById('addTransactions')?.addEventListener('click', () => {
+        document.querySelector("[data-modal]")?.showModal();
+    });
+    document.getElementById("ok")?.addEventListener('click', add);
 }
 
-console.log(document.querySelector(".logoutButton"));
 
-
-function updateElement(id, textorNode){    //used to change the text of the respective element by specifying the parameters(id and text)
+function updateElement(id, content){    //used to change the text of the respective element by specifying the parameters(id and text)
   const element = document.getElementById(id);
   element.textContent = '';
-  element.append(textorNode); //We replace the textContent mathod with the append() method as it allows to attach either text or DOM Nodes to a parent element, which is perfect for all our use cases.
+  element.append(content); //We replace the textContent mathod with the append() method as it allows to attach either text or DOM Nodes to a parent element, which is perfect for all our use cases.
 }
 
 function navigate(path) {
@@ -205,7 +236,6 @@ function updateState(property, newData) {
   }
 }
 
-
 async function init() {
   const savedUser = localStorage.getItem(storageKey);
   if (savedUser) {
@@ -217,5 +247,7 @@ async function init() {
   window.onpopstate = () => updateRoute();  //Ensures navigation works on clicking the back and forward buttons.
   updateRoute(); //Loads the correct page when the app starts.
 }
+
+
 
 init();

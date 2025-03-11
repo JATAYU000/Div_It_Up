@@ -22,7 +22,7 @@
             <form id="loginForm" action="javascript: login()">
               <label for="username">Username</label><br>
               <input id="username" name="user" type="text"><br>
-              <div id="loginError" role="alert"></div>
+              <div id="loginError" role="alert" class="error"></div>
               <button>Login</button>
             </form>
             <hr color="grey">
@@ -31,12 +31,12 @@
               <label for="user">Username (required)</label><br>
               <input id="user" name="user" type="text" maxlength="25" required><br>
               <label for="currency">Currency (required)</label><br>
-              <input id="currency" name="currency" type="text" value="$ 0" required><br>
+              <input id="currency" name="currency" type="text" value="$" required><br>
               <label for="description">Description</label><br>
               <input id="description" name="description" type="text" maxlength="100"><br>
               <label for="balance">Current balance</label><br>
               <input id="balance" name="balance" type="number" value="0" maxlength="5"><br>
-              <div id="registerError" role="alert"></div>
+              <div id="registerError" role="alert" class="error"></div>
               <button>Register</button>
             </form>
           </section>
@@ -62,7 +62,7 @@
               <h2 id="description"></h2>
             </div>
             <div>
-              <button id="addTransactions" type="button">Add Transactions</button>
+              <button id="addTransactions">Add Transactions</button>
             </div>
           </div>
           <table id="table" border="6">
@@ -77,6 +77,23 @@
           </table>
         </section>
     </template>
+    <dialog data-modal>
+      <div>
+        <h1 class="heading4">ADD TRANSACTION</h1>
+      </div>
+      <div class="dialog">
+        <form action="javascript: add()" id="transactionForm" method="dialog">
+          <label for="date">DATE</label><br>
+          <input type="date" name="date" id="datetr"><br>
+          <label for="object">OBJECT</label><br>
+          <input type="text" name="object" id="objtr"><br>
+          <label for="amount">AMOUNT (USE NEGATIVE VALUE FOR DEBIT)</label><br>
+          <input type="number" name="amount" id="amounttr">
+          <button id="cancel" class="dialogButton">CANCEL</button>
+          <button id="ok" class="dialogButton" type="submit">OK</button>
+        </form>
+      </div>
+    </dialog>
     <template id="transaction">
       <tr>
         <td></td>
