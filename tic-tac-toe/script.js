@@ -1,94 +1,95 @@
-const cells = document.querySelectorAll("#box");
+const cells = document.querySelectorAll(".box"); // Change to class selector
 const chance = document.querySelector("#player");
 const newButton = document.querySelector("#newGame");
 
-let vict=0;
+let vict = 0;
 let symbol;
-
 let cellX = [];
 let cellO = [];
-
-let options = [];
+let currentIndex = 0; // Keep track of keyboard navigation
 
 const winningPossibilities = [
-    ['0','1','2'],
-    ['3','4','5'],
-    ['6','7','8'],
-    ['0','3','6'],
-    ['1','4','7'],
-    ['2','5','8'],
-    ['0','4','8'],
-    ['2','4','6'],
-]
+    ['0', '1', '2'],
+    ['3', '4', '5'],
+    ['6', '7', '8'],
+    ['0', '3', '6'],
+    ['1', '4', '7'],
+    ['2', '5', '8'],
+    ['0', '4', '8'],
+    ['2', '4', '6'],
+];
 
-newButton.addEventListener('click',startGame);
+newButton.addEventListener("click", startGame);
+document.addEventListener("keydown", handleKeyboardNavigation);
 
-function startGame(){
-    cells.forEach(cell=>{
-        cell.innerHTML='';
-    })
-    chance.innerHTML='';
-    symbol='X';
-    cellO=[];
-    cellX=[]
-    vict=0;
-    selectBox();
-}
-
-
-function selectBox(){
-    cells.forEach(cell=>{
-        cell.addEventListener('click',instantiate);
-    })
+function startGame() {
+    cells.forEach(cell => {
+        cell.innerHTML = "";
+    });
+    chance.innerHTML = "";
+    symbol = "X";
+    cellO = [];
+    cellX = [];
+    vict = 0;
+    currentIndex = 0;
+    highlightCell();
     
 }
 
-function changePlayer(){
-    if(symbol=='O'){
-        symbol='X';
-    }else{
-        symbol='O';
-    }
-    chance.innerHTML=`${symbol} 's chance to play`;
+function changePlayer() {
+    symbol = symbol === "O" ? "X" : "O";
+    chance.innerHTML = `${symbol}'s turn`;
 }
 
-
-
-function winGame(cells, player) { 
-    for (let i = 0; i < winningPossibilities.length; i++) {
-        if ((hasSubset(cells,winningPossibilities))) {
-            chance.innerHTML = `${player} has won the game.`;
-         // Stop further execution after a win
-            vict+=1;
-            return;
-        }
+function winGame(playerCells, player) {
+    if (winningPossibilities.some(pattern => pattern.every(index => playerCells.includes(index)))) {
+        chance.innerHTML = `${player} has won the game!`;
+        vict = 1;
+        return;
     }
     changePlayer();
 }
 
-function hasSubset(x,groups){
-    const xSet = new Set(x);
-    return groups.some(group => group.every(num => xSet.has(num)));
+function instantiate(event) {
+    let cell = event.target;
+    if (cell.innerHTML !== "" || vict > 0) return; // Prevent overwriting or playing after a win
+
+    let index = cell.getAttribute("data-index"); // Get the cell index
+
+    cell.innerHTML = symbol;
+    if (symbol === "X") {
+        cellX.push(index);
+        cellX.sort();
+    } else {
+        cellO.push(index);
+        cellO.sort();
+    }
+
+    winGame(symbol === "X" ? cellX : cellO, symbol);
 }
 
-function instantiate(event){
-    let cell = event.target;
-    if (cell.innerHTML !== "") return; // Prevent overwriting
-    cell.innerHTML=symbol;
-    if(symbol == 'X'){
-        cellX.push(cell.className); 
-        cellX.sort();
-        console.log(cellX);
-    }else{
-        cellO.push(cell.className);
-        cellO.sort();
-        console.log(cellO);
+function handleKeyboardNavigation(event) {
+    if (vict > 0) return; // Stop if the game is over
+
+    const rowSize = 3;
+    if (event.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % cells.length;
+    } else if (event.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + cells.length) % cells.length;
+    } else if (event.key === "ArrowDown") {
+        currentIndex = (currentIndex + rowSize) % cells.length;
+    } else if (event.key === "ArrowUp") {
+        currentIndex = (currentIndex - rowSize + cells.length) % cells.length;
+    } else if (event.key === "Enter") {
+        instantiate({ target: cells[currentIndex] }); // Fix: Ensure Enter key works
     }
-    winGame(cellX,symbol);
-    if(vict>0){
-        cells.forEach(cell =>{
-            cell.removeEventListener('click',instantiate);
-        })
-    }
+
+    highlightCell();
 }
+
+function highlightCell() {
+    cells.forEach(cell => cell.classList.remove("highlight"));
+    cells[currentIndex].classList.add("highlight");
+}
+
 

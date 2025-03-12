@@ -8,6 +8,14 @@
     justify-self: center;
 }
 
+.highlight{
+    border: solid 2px black;
+    font-size: 80px;
+    text-align: center;
+    line-height: 160px;
+    background-color: rgb(4, 238, 238);
+}
+
 .title{
     font-size: 40px;
     letter-spacing: 8px;
@@ -22,7 +30,7 @@
     margin-top: 60px;
 }
 
-#box{
+.box{
     border: solid 2px black;
     font-size: 80px;
     text-align: center;
