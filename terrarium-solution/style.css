@@ -4,8 +4,10 @@ body {
 }
 
 h1 {
-	color: #3a241d;
+	color: #06410b;
 	text-align: center;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 50px;
 }
 
 
