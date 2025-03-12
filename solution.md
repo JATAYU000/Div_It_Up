@@ -322,3 +322,117 @@ window.onpopstate = () => updateRoute();  //Ensures navigation works on clicking
 updateRoute(); //Loads the correct page when the app starts.
 ```
 
+## 4. state-management
+
+### Challenge
+
+Update the updateState() function to contain the following code, so that the storageKey stores the username only, rather than storing the entire account detials.
+
+```javascript
+function updateState(property, newData) {
+  state = Object.freeze({
+      ...state,
+      [property]: newData
+  });
+
+  if (newData && newData.user) {
+      localStorage.setItem(storageKey, newData.user);
+  } else {
+      localStorage.removeItem(storageKey);  // Ensure old data is removed
+  }
+```
+Subsequently, we also need to make changes to our init() function to get our account details later by using getAccount() function.
+
+```javascript
+async function init() {
+  const savedUser = localStorage.getItem(storageKey);
+  if (savedUser) {
+    const info = await getAccount(savedUser);
+    updateState('account', info);    //calls the updateState function to get the entire user details after getting the username.
+  }
+
+  // Our previous initialization code
+  window.onpopstate = () => updateRoute();  //Ensures navigation works on clicking the back and forward buttons.
+  updateRoute(); //Loads the correct page when the app starts.
+}
+```
+### Assignment
+
+In order to add a feature which enables us to add the transactions to our account and displays the balance the next time we login, we need to first create a dialog which opens up where we enter the transaction details.
+
+So first , I added the (add transaction) button which on clicking will open our dialog. I added the above code to my index.html file just below our div element which is containing our description heading.
+
+```html
+<div>
+    <button id="addTransactions">Add Transactions</button>
+</div>
+```
+I then added some styling to my button such that the final output looks like this.
+
+
+I then added the dialog tag in my index.html file which shows up only when the button is clicked.I first created a separate html file to style my dialog and then integrated everything into my actual file, making it easy for me to work on one thing.
+I added the following code which creates a data modal which shows up only when the add transaction button is clicked.
+
+```html
+   <dialog data-modal>
+      <div>
+        <h1 class="heading4">ADD TRANSACTION</h1>
+      </div>
+      <div class="dialog">
+        <form action="javascript: add()" id="transactionForm" method="dialog">
+          <label for="date">DATE</label><br>
+          <input type="date" name="date" id="datetr"><br>
+          <label for="object">OBJECT</label><br>
+          <input type="text" name="object" id="objtr"><br>
+          <label for="amount">AMOUNT (USE NEGATIVE VALUE FOR DEBIT)</label><br>
+          <input type="number" name="amount" id="amounttr">
+          <button id="cancel" class="dialogButton">CANCEL</button>
+          <button id="ok" class="dialogButton" type="submit">OK</button>
+        </form>
+      </div>
+    </dialog>
+```
+I had added a form in my dialog so that on adding the transaction details and submitting my form , it would be a lot more easier to save it to the api later. ( basically following the same thing that we follow for register) 
+
+I added all the event listeners in my project in attachEventListeners function due to some error I faced in my later stages (which I will specify at a later stage)
+
+```javascript
+async function add(){
+  const transactionForm = document.getElementById('transactionForm');
+  if (!transactionForm) {
+    console.log("Transaction form not found!");
+    return;
+  }
+  const addDetails = new FormData(transactionForm);
+  const transactionDetails = Object.fromEntries(addDetails);
+  console.log("Transaction Details:", transactionDetails);
+  // Create the row
+  const transactionRow = createTransactionRow(transactionDetails);
+  // Find the transactions table
+  const transactionsTable = document.getElementById('transactions');  // Ensure this is the tbody, not the table
+  if (!transactionsTable) {
+    console.log("Transactions table not found!");
+    return;
+  }
+  // Append the new row to the table
+  transactionsTable.appendChild(transactionRow);
+  console.log("Attempting to save transaction to API...");
+
+  try {
+    const response = await fetch(`${api}${encodeURIComponent(state.account.user)}/transactions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(transactionDetails),
+    });
+    if (!response.ok) throw new Error(await response.text());
+    console.log("Transaction successfully saved to API.");
+  } catch (error) {
+    console.error("Error saving transaction:", error);
+  }
+
+  // Reset the form after adding
+  transactionForm.reset();
+}
+```
+
+
