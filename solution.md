@@ -42,6 +42,10 @@ function para(name,deg = "Btech"){
 
 ```
 
+## Challenge
+
+A method is associated with an object and operates on the object's data, while a function is independent and operates on data passed explicitly to it.
+
 # 3. Sub Topic 3
 
 ## Assignment
