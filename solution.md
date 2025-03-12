@@ -127,6 +127,13 @@ For adding a bubble shine to the container, I was confused as from where to star
 
 ## Assignment
 
+The Document Object Model (DOM) offers a variety of interfaces to interact with and manipulate web documents. One such interface is NodeList, which represents collections of nodes, typically returned by properties like Node.childNodes and methods such as document.querySelectorAll(). 
+MOZILLA DEVELOPER NETWORK
+
+Usage of NodeList on Websites:
+
+A common use case for NodeList is when developers need to apply changes to multiple elements selected via CSS selectors. Understanding and utilizing the NodeList interface is essential for efficiently managing groups of DOM elements, enabling developers to implement dynamic and interactive features on websites.
+
 ## Challenge
 
 ```javascript
