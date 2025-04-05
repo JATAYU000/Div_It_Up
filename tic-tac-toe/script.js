@@ -1,4 +1,4 @@
-const cells = document.querySelectorAll(".box"); // Change to class selector
+const cells = document.querySelectorAll(".box"); 
 const chance = document.querySelector("#player");
 const newButton = document.querySelector("#newGame");
 
@@ -22,17 +22,23 @@ const winningPossibilities = [
 newButton.addEventListener("click", startGame);
 document.addEventListener("keydown", handleKeyboardNavigation);
 
+
 function startGame() {
-    cells.forEach(cell => {
-        cell.innerHTML = "";
-    });
-    chance.innerHTML = "";
-    symbol = "X";
+    newButton.blur();
+    symbol = "O";
     cellO = [];
     cellX = [];
     vict = 0;
     currentIndex = 0;
-    highlightCell();
+    chance.innerHTML = `${symbol}'s turn`;
+    
+    cells.forEach(cell => {
+        cell.innerHTML = "";
+        cell.classList.remove("highlight");
+        cell.removeEventListener("click", instantiate);
+        cell.addEventListener("click", instantiate);
+    });
+    
     
 }
 
@@ -44,6 +50,11 @@ function changePlayer() {
 function winGame(playerCells, player) {
     if (winningPossibilities.some(pattern => pattern.every(index => playerCells.includes(index)))) {
         chance.innerHTML = `${player} has won the game!`;
+        vict = 1;
+        return;
+    }
+    if (cellX.length + cellO.length === 9) {
+        chance.innerHTML = "It's a draw!";
         vict = 1;
         return;
     }
@@ -91,5 +102,6 @@ function highlightCell() {
     cells.forEach(cell => cell.classList.remove("highlight"));
     cells[currentIndex].classList.add("highlight");
 }
+
 
 
