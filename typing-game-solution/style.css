@@ -1,0 +1,62 @@
+.highlight {
+    background-color: rgb(7, 182, 235);
+  }
+  
+.error {
+    background-color: lightcoral;
+    border: red;
+    width: 220px;
+    height: 45px;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+
+body{
+  background-color: rgb(12, 2, 2);
+}
+
+h1{
+    font-family: 'Fondamento',serif;
+    font-size: 80px;
+    color: blueviolet;
+    text-align: center;
+  }
+
+p{
+  font-family: 'Fondamento',serif;
+  font-size: 40px;
+  color: yellow;
+  text-align: center;
+}
+
+input {
+  width: 220px;
+  height: 45px;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+input:disabled {
+  width: 0px;
+  height: 0px;
+  background-color: rgb(12, 2, 2);
+}
+
+input:focus{
+  outline: none;
+  border: none;
+}
+
+button{
+  height: 45px;
+  margin-left: 30px;
+  border-color: white;
+  width: 70px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.typing{
+  margin-top: 90px;
+  margin-left: 40%;
+}
