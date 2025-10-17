@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Drawing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1> Pixel Art Drawing Game</h1>
+        <p class="subtitle">Use WASD to move and ENTER to draw!</p>
+        
+        <div class="coordinates">
+            Current Position: <span id="position">(8, 8)</span>
+        </div>
+        
+        <div class="canvas-container">
+            <div id="container" class="container"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="reset" onclick="reset()">Reset Canvas</button>
+            <button id="toggleDraw" onclick="toggleDrawMode()">Draw Mode: ON</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>Controls</h3>
+            <div class="key-group">
+                <div class="key-item">
+                    <div class="key">W</div>
+                    <div class="key-description">Move Up</div>
+                </div>
+                <div class="key-item">
+                    <div class="key">A</div>
+                    <div class="key-description">Move Left</div>
+                </div>
+                <div class="key-item">
+                    <div class="key">S</div>
+                    <div class="key-description">Move Down</div>
+                </div>
+                <div class="key-item">
+                    <div class="key">D</div>
+                    <div class="key-description">Move Right</div>
+                </div>
+                <div class="key-item">
+                    <div class="key">ENTER</div>
+                    <div class="key-description">Draw/Erase</div>
+                </div>
+                <div class="key-item">
+                    <div class="key">SPACE</div>
+                    <div class="key-description">Toggle Draw</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
